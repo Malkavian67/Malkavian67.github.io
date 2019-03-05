@@ -18,6 +18,19 @@ function deviceOrientationHandler (eventData) {
   //logo.style.MozTransform = "rotate(" + tiltLR + "deg)";
   //logo.style.transform = "rotate(" + tiltLR + "deg) rotate3d(1,0,0, " + (tiltFB * -1) + "deg)";
   
-  logo.style.transform = "translate("+(tiltLR)*-1+"px,"+(tiltFB)*-1+"px)";
+  var max = 30;
+  
+  //logo.style.transform = "translate("+(tiltLR)*-1+"px,"+(tiltFB)*-1+"px)";
+  
+  if((tiltLR < max*-1 || tiltLR > max) && (tiltFB < max*-1 || tiltFB > max)){
+    logo.style.transform = "translate("+(max)*-1+"px,"+(max)*-1+"px)";
+  }else if((tiltLR < max*-1 || tiltLR > max) && (tiltFB > max*-1 || tiltFB < max)){
+    logo.style.transform = "translate("+(max)*-1+"px,"+(tiltFB)*-1+"px)";
+  }else if((tiltLR > max*-1 || tiltLR < max) && (tiltFB < max*-1 || tiltFB > max)){
+    logo.style.transform = "translate("+(tiltLR)*-1+"px,"+(max)*-1+"px)";
+  }else{
+    logo.style.transform = "translate("+(tiltLR)*-1+"px,"+(tiltFB)*-1+"px)";
+  }
+  
     
 }
