@@ -89,11 +89,6 @@ function intervalHandler(interval) {
             fill: false
     };
 
-function accelerometerUpdate(e) {
-   var aX = event.accelerationIncludingGravity.x*1;
-   var aY = event.accelerationIncludingGravity.y*1;
-   var aZ = event.accelerationIncludingGravity.z*1;
-}
 
 var i=0;
 var intervalID;
@@ -108,7 +103,7 @@ $(function() {
 });
 
 function myCallback() {
-    alert(window.addEventListener("devicemotion", accelerometerUpdate, true));
+    alert(accelerationHandler(eventData.acceleration, 'moAccel'));
  
           
     i++
