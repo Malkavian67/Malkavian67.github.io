@@ -116,7 +116,8 @@ function myCallback() {
     alert($("Accelerometer: "
     + event.accelerationIncludingGravity.x + ", "
     + event.accelerationIncludingGravity.y + ", "
-    + event.accelerationIncludingGravity.z);
+    + event.accelerationIncludingGravity.z));
+          
     i++
     
     if(i>=60){
