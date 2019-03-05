@@ -1,9 +1,9 @@
 .container {
  /* perspective: 300;*/
  /* -webkit-perspective: 300;*/
-  position:fixed;
+ /* position:fixed;*/
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Circle_%28transparent%29.png/768px-Circle_%28transparent%29.png');
-background-size: 50%;
+background-size: contain;
 background-repeat: no-repeat;
 
 }
