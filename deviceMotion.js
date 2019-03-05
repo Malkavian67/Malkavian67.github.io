@@ -53,6 +53,11 @@ function accelerationHandler(acceleration, targetId) {
   document.getElementById(targetId).innerHTML = info;
 }
 
+function accelerationHandlerInfos() {
+ var info = document.getElementById(targetId).innerHTML ;
+  return info;
+}
+
 function rotationHandler(rotation) {
   var info, xyz = "[X, Y, Z]";
 
@@ -104,9 +109,7 @@ $(function() {
 
 
 function myCallback() {
-   console.log(rotationHandlerDataX.data);
-    console.log(rotationHandlerDataX.data);
-    console.log(rotationHandlerDataX.data);
+   console.log(accelerationHandlerInfos());
     i++
     
     if(i>=30){
