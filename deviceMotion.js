@@ -106,8 +106,9 @@ $(function() {
 });
 
 function myCallback() {
-    alert(accelerationHandlerInfos());
-   console.log(accelerationHandlerInfos());
+    //alert(accelerationHandlerInfos());
+    console.log(accelerationHandlerInfos());
+    console.log($("#moAccel").val());
     i++
     
     if(i>=60){
