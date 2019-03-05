@@ -13,7 +13,7 @@ if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(function (location) {
       appendLocation(location, 'fetched');
     });
-    watchId = navigator.geolocation.watchPosition(appendLocation);
+   // watchId = navigator.geolocation.watchPosition(appendLocation);
   });
 } else {
   target.innerText = 'Geolocation API not supported.';
