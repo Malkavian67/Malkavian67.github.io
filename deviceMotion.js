@@ -54,7 +54,7 @@ function accelerationHandler(acceleration, targetId) {
 }
 
 function accelerationHandlerInfos() {
- var info = document.getElementById('moAccelGrav').innerHTML ;
+ var info = $("#moAccel").val();
   return info;
 }
 
@@ -110,7 +110,7 @@ function myCallback() {
    console.log(accelerationHandlerInfos());
     i++
     
-    if(i>=30){
+    if(i>=60){
         clearInterval(intervalID);
         alert("fin 30 secondes");
     }
