@@ -53,10 +53,6 @@ function accelerationHandler(acceleration, targetId) {
   document.getElementById(targetId).innerHTML = info;
 }
 
-function accelerationHandlerInfos() {
- var info = $("#moAccel").val();
-  return info;
-}
 
 function rotationHandler(rotation) {
   var info, xyz = "[X, Y, Z]";
@@ -93,6 +89,12 @@ function intervalHandler(interval) {
             fill: false
     };
 
+function accelerometerUpdate(e) {
+   var aX = event.accelerationIncludingGravity.x*1;
+   var aY = event.accelerationIncludingGravity.y*1;
+   var aZ = event.accelerationIncludingGravity.z*1;
+}
+
 var i=0;
 var intervalID;
 
@@ -106,17 +108,8 @@ $(function() {
 });
 
 function myCallback() {
-    //alert(accelerationHandlerInfos());
-   // console.log(accelerationHandlerInfos());
-     console.log("Accelerometer: "
-    + event.accelerationIncludingGravity.x + ", "
-    + event.accelerationIncludingGravity.y + ", "
-    + event.accelerationIncludingGravity.z);
-    
-    alert($("Accelerometer: "
-    + event.accelerationIncludingGravity.x + ", "
-    + event.accelerationIncludingGravity.y + ", "
-    + event.accelerationIncludingGravity.z));
+    alert(window.addEventListener("devicemotion", accelerometerUpdate, true));
+ 
           
     i++
     
