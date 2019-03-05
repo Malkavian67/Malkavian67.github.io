@@ -66,6 +66,55 @@ function intervalHandler(interval) {
   document.getElementById("moInterval").innerHTML = interval;
 }
 
+
+
+
+ var rotationHandlerDataX = { 
+            data: [],
+            label: "X",
+            borderColor: "#3e95cd",
+            fill: false
+    };
+    var rotationHandlerDataY = { 
+            data: [],
+            label: "Y",
+            borderColor: "#3e95cd",
+            fill: false
+    };
+    var rotationHandlerDataZ = { 
+            data: [],
+            label: "Z",
+            borderColor: "#3e95cd",
+            fill: false
+    };
+
+
+$(function() {
+      $("#askButton").click( function()
+           {
+             alert('button clicked');
+           }
+      );
+});
+
+var i=0;
+
+if(i>=30){
+    clearInterval(refreshIntervalId);
+    alert("fin 30 secondes");
+}
+var intervalID = window.setInterval(myCallback, 500);
+
+function myCallback() {
+   console.log(rotationHandlerDataX.data);
+    console.log(rotationHandlerDataX.data);
+    console.log(rotationHandlerDataX.data);
+    i++
+}
+
+
+
+
 new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
