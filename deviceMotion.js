@@ -54,7 +54,7 @@ function accelerationHandler(acceleration, targetId) {
 }
 
 function accelerationHandlerInfos() {
- var info = document.getElementById(targetId).innerHTML ;
+ var info = document.getElementById('moAccelGrav').innerHTML ;
   return info;
 }
 
