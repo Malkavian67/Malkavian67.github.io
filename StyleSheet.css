@@ -3,6 +3,9 @@
  /* -webkit-perspective: 300;*/
   position:fixed;
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Circle_%28transparent%29.png/768px-Circle_%28transparent%29.png');
+background-size: 50%;
+background-repeat: no-repeat;
+
 }
 
 #imgLogo {
