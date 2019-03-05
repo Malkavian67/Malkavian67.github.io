@@ -105,11 +105,8 @@ $(function() {
       );
 });
 
-
-
-
-
 function myCallback() {
+    alert(accelerationHandlerInfos());
    console.log(accelerationHandlerInfos());
     i++
     
