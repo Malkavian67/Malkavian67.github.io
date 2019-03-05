@@ -18,7 +18,7 @@ function deviceOrientationHandler (eventData) {
   //logo.style.MozTransform = "rotate(" + tiltLR + "deg)";
   //logo.style.transform = "rotate(" + tiltLR + "deg) rotate3d(1,0,0, " + (tiltFB * -1) + "deg)";
   
-  var max = 30;
+  var max = 5;
   
   //logo.style.transform = "translate("+(tiltLR)*-1+"px,"+(tiltFB)*-1+"px)";
   
