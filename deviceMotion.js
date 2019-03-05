@@ -1,5 +1,9 @@
 
-      if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) {
+      
+alert("test");
+
+
+if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) {
   document.getElementById('moApi').innerHTML = 'Generic Sensor API';
   
   let lastReadingTimestamp;
