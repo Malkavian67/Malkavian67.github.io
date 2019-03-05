@@ -94,12 +94,13 @@ function intervalHandler(interval) {
     };
 
 var i=0;
+var intervalID;
 
 $(function() {
       $("#askButton").click( function()
            {
              alert('button clicked');
-             var intervalID = window.setInterval(myCallback, 500);
+             intervalID = window.setInterval(myCallback, 500);
            }
       );
 });
@@ -113,7 +114,7 @@ function myCallback() {
     i++
     
     if(i>=30){
-        clearInterval(refreshIntervalId);
+        clearInterval(intervalID);
         alert("fin 30 secondes");
     }
 }
