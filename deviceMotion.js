@@ -108,7 +108,15 @@ $(function() {
 function myCallback() {
     //alert(accelerationHandlerInfos());
    // console.log(accelerationHandlerInfos());
-    alert($("#moAccel").val());
+     console.log("Accelerometer: "
+    + event.accelerationIncludingGravity.x + ", "
+    + event.accelerationIncludingGravity.y + ", "
+    + event.accelerationIncludingGravity.z);
+    
+    alert($("Accelerometer: "
+    + event.accelerationIncludingGravity.x + ", "
+    + event.accelerationIncludingGravity.y + ", "
+    + event.accelerationIncludingGravity.z);
     i++
     
     if(i>=60){
