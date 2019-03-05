@@ -88,28 +88,31 @@ function intervalHandler(interval) {
             fill: false
     };
 
+var i=0;
 
 $(function() {
       $("#askButton").click( function()
            {
              alert('button clicked');
+             var intervalID = window.setInterval(myCallback, 500);
            }
       );
 });
 
-var i=0;
 
-if(i>=30){
-    clearInterval(refreshIntervalId);
-    alert("fin 30 secondes");
-}
-var intervalID = window.setInterval(myCallback, 500);
+
+
 
 function myCallback() {
    console.log(rotationHandlerDataX.data);
     console.log(rotationHandlerDataX.data);
     console.log(rotationHandlerDataX.data);
     i++
+    
+    if(i>=30){
+        clearInterval(refreshIntervalId);
+        alert("fin 30 secondes");
+    }
 }
 
 
