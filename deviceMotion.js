@@ -1,6 +1,4 @@
-
-      
-alert("test");
+    
 
 
 if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) {
