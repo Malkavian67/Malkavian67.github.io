@@ -30,7 +30,7 @@ function deviceOrientationHandler (eventData) {
     x = max;
   }else if(tiltFB < max*-1){
     y = max*1;
-  }else fi(tiltFB > max){
+  }else if(tiltFB > max){
     y = max
   }
   
