@@ -21,16 +21,20 @@ function deviceOrientationHandler (eventData) {
   var max = 25;
   
   //logo.style.transform = "translate("+(tiltLR)*-1+"px,"+(tiltFB)*-1+"px)";
+  var x = tiltLR;
+  var y = tiltFB;
   
-  if((tiltLR < max*-1 || tiltLR > max) && (tiltFB < max*-1 || tiltFB > max)){
-    logo.style.transform = "translate("+(max)*-1+"px,"+(max)*-1+"px)";
-  }else if((tiltLR < max*-1 || tiltLR > max) && (tiltFB > max*-1 || tiltFB < max)){
-    logo.style.transform = "translate("+(max)*-1+"px,"+(tiltFB)*-1+"px)";
-  }else if((tiltLR > max*-1 || tiltLR < max) && (tiltFB < max*-1 || tiltFB > max)){
-    logo.style.transform = "translate("+(tiltLR)*-1+"px,"+(max)*-1+"px)";
-  }else{
-    logo.style.transform = "translate("+(tiltLR)*-1+"px,"+(tiltFB)*-1+"px)";
+  if(tiltLR < max*-1){
+    x = max*-1;
+  }else if(tiltLR > max){
+    x = max;
+  }else if(tiltFB < max*-1){
+    y = max*1;
+  }else fi(tiltFB > max){
+    y = max
   }
+  
+  logo.style.transform = "translate("+ x +"px,"+ y +"px)";
   
     
 }
