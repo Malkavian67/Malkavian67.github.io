@@ -103,9 +103,7 @@ $(function() {
 });
 
 function myCallback() {
-    alert(accelerationHandler(eventData.acceleration, 'moAccel'));
- 
-          
+    alert($('#moAccel').val());          
     i++
     
     if(i>=60){
