@@ -24,17 +24,10 @@ function deviceOrientationHandler (eventData) {
   var x = tiltLR;
   var y = tiltFB;
   
-  if(tiltLR < max*-1){
-    x = max*-1;
-  }else if(tiltLR > max){
-    x = max;
-  }else if(tiltFB < max*-1){
-    y = max*1;
-  }else if(tiltFB > max){
-    y = max
-  }
+  var ratio = 0.5;
   
-  logo.style.transform = "translate("+ x +"px,"+ y +"px)";
+
+  logo.style.transform = "translate("+ x * ratio +"px,"+ y * ratio +"px)";
   
     
 }
