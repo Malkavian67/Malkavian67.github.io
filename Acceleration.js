@@ -73,11 +73,11 @@ $(function()
     info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
     document.getElementById(targetId).innerHTML = info;
     
-    //alert(info);
+    alert(info);
 
     var length = Math.sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z );
 
-    //alert(length);
+    alert(length);
 
     Values.push(length);
     Label.push("");
@@ -109,12 +109,12 @@ $(function()
     function intervalHandler(interval) {
         duration += interval
         if(duration > 30000){
-            
+
             accelerometer.stop();
             gravity.stop();
             gyroscope.stop();
             
-            new Chart(docuemnt.getElementById("line-chart"), {
+            new Chart(document.getElementById("line-chart"), {
                 type: 'line',
                 data: {
                 labels: Label,
