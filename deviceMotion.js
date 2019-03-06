@@ -116,7 +116,7 @@ function myCallback() {
 var labelOfChart=[0];
 var y=0;
 
-for(var i=0;i<61;i++){
+for(var i=0;i<60;i++){
     y=y+0.5;
     labelOfChart.push(y);
 }
