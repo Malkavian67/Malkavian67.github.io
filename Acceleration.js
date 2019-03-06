@@ -18,6 +18,16 @@ $(function()
 {
     $("#askButton").click( function()
     {
+        duration=0;
+        min=-1;
+        max=-1;
+        count=0;
+        sum=0;
+        avg = 0;
+
+        Values = [];
+        Label = [];
+
         if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) 
         {
             document.getElementById('moApi').innerHTML = 'Generic Sensor API';
@@ -43,9 +53,9 @@ $(function()
 
             gyroscope = new Gyroscope()
             gyroscope.addEventListener('reading', e => rotationHandler({
-            alpha: gyroscope.x,
-            beta: gyroscope.y,
-            gamma: gyroscope.z
+                alpha: gyroscope.x,
+                beta: gyroscope.y,
+                gamma: gyroscope.z
             }));
             gyroscope.start();
 
@@ -113,8 +123,11 @@ $(function()
 
             accelerometer.stop();
             
-            alert(Values);
-            alert(Label);
+            Label[0] = 0;
+            Label[Label.count-1] = 30
+
+            //alert(Values);
+            //alert(Label);
 
             new Chart(document.getElementById("line-chart"), {
                 type: 'line',
@@ -137,8 +150,8 @@ $(function()
                 }
             });
             
-            gravity.stop(); 
             gyroscope.stop();
+            gravity.stop(); 
         }
     }
   
