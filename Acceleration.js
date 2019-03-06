@@ -14,13 +14,14 @@ let avg = 0;
 let Values = [];
 let Label = [];
 
-$(function() {
+$(function() 
+{
     $("#askButton").click( function()
-     {
-          if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) 
-          {
+    {
+        if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) 
+        {
             document.getElementById('moApi').innerHTML = 'Generic Sensor API';
-  
+
             accelerometer = new LinearAccelerationSensor()
 
             //acceleration
@@ -33,7 +34,7 @@ $(function() {
                 accelerationHandler(accelerometer, 'moAccel');
             });
             accelerometer.start();
-  
+
             if ('GravitySensor' in window) {
                 gravity = new GravitySensor()
                 gravity.addEventListener('reading', e => accelerationHandler(gravity, 'moAccelGrav'));
@@ -42,26 +43,26 @@ $(function() {
 
             gyroscope = new Gyroscope()
             gyroscope.addEventListener('reading', e => rotationHandler({
-              alpha: gyroscope.x,
-              beta: gyroscope.y,
-              gamma: gyroscope.z
+            alpha: gyroscope.x,
+            beta: gyroscope.y,
+            gamma: gyroscope.z
             }));
             gyroscope.start();
+
+        } 
+        else if ('DeviceMotionEvent' in window) {
+            document.getElementById('moApi').innerHTML = 'Device Motion API';
+
+            var onDeviceMotion = function (eventData) {
+                accelerationHandler(eventData.acceleration, 'moAccel');
+                intervalHandler(eventData.interval);}
+            window.addEventListener('devicemotion', onDeviceMotion, false);
+        } else {
+            document.getElementById('moApi').innerHTML = 'No Accelerometer & Gyroscope API available';
+        }
   
-          } 
-          else if ('DeviceMotionEvent' in window) {
-              document.getElementById('moApi').innerHTML = 'Device Motion API';
-  
-              var onDeviceMotion = function (eventData) {
-                  accelerationHandler(eventData.acceleration, 'moAccel');
-                  intervalHandler(eventData.interval);}
-              window.addEventListener('devicemotion', onDeviceMotion, false);
-          } else {
-              document.getElementById('moApi').innerHTML = 'No Accelerometer & Gyroscope API available';
-          }
-  
-      })
-  });
+    })
+});
   
   
   function accelerationHandler(acceleration, targetId) {
@@ -72,16 +73,19 @@ $(function() {
     info = info.replace("Z", acceleration.z && acceleration.z.toFixed(3));
     document.getElementById(targetId).innerHTML = info;
     
-    
+    alert(info);
+
     var length = Math.sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z );
-    
+
+    alert(length);
+
     Values.push(length);
     Label.push("");
     
     sum += length;
     avg = sum / ++count;
     document.getElementById("avg").innerHTML = avg;
-    
+
     if(min == -1 || min > length){
       min = length;
       document.getElementById("min").innerHTML = min;
@@ -105,7 +109,10 @@ $(function() {
     function intervalHandler(interval) {
         duration += interval
         if(duration > 30000){
-            accelerometer.stop();    
+            
+            accelerometer.stop();
+            gravity.stop();
+            gyroscope.stop();
             
             new Chart(docuemnt.getElementById("line-chart"), {
                 type: 'line',
