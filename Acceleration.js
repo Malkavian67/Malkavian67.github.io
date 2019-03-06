@@ -1,43 +1,43 @@
 $(function() {
   $("#askButton").click( function()
    {
-      if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) {
-        document.getElementById('moApi').innerHTML = 'Generic Sensor API';
+        if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) {
+            document.getElementById('moApi').innerHTML = 'Generic Sensor API';
 
-      let lastReadingTimestamp;
+        let lastReadingTimestamp;
 
-      let duration=0;
-      let min=-1;
-      let max=-1;
-      let count=0;
-      let sum=0;
-      let avg = 0;
+        let duration=0;
+        let min=-1;
+        let max=-1;
+        let count=0;
+        let sum=0;
+        let avg = 0;
 
-      //acceleration
-      let accelerometer = new LinearAccelerationSensor();
-      accelerometer.addEventListener('reading', e => {
-        if (lastReadingTimestamp) {
-          intervalHandler(Math.round(accelerometer.timestamp - lastReadingTimestamp));
+        //acceleration
+        let accelerometer = new LinearAccelerationSensor();
+        accelerometer.addEventListener('reading', e => {
+            if (lastReadingTimestamp) {
+            intervalHandler(Math.round(accelerometer.timestamp - lastReadingTimestamp));
+            }
+            lastReadingTimestamp = accelerometer.timestamp
+            accelerationHandler(accelerometer, 'moAccel');
+        });
+        accelerometer.start();
+
+        } 
+        else if ('DeviceMotionEvent' in window) {
+            document.getElementById('moApi').innerHTML = 'Device Motion API';
+
+            var onDeviceMotion = function (eventData) {
+                accelerationHandler(eventData.acceleration, 'moAccel');
+                intervalHandler(eventData.interval);}
+            window.addEventListener('devicemotion', onDeviceMotion, false);
+        } else {
+            document.getElementById('moApi').innerHTML = 'No Accelerometer & Gyroscope API available';
         }
-        lastReadingTimestamp = accelerometer.timestamp
-        accelerationHandler(accelerometer, 'moAccel');
-      });
-      accelerometer.start();
 
-      } else if ('DeviceMotionEvent' in window) {
-        document.getElementById('moApi').innerHTML = 'Device Motion API';
-
-      var onDeviceMotion = function (eventData) {
-        accelerationHandler(eventData.acceleration, 'moAccel');
-        intervalHandler(eventData.interval);}
-  });
+    })
 });
-  
-
-window.addEventListener('devicemotion', onDeviceMotion, false);
-} else {
-  document.getElementById('moApi').innerHTML = 'No Accelerometer & Gyroscope API available';
-}
 
 var Values = [];
 var Label = [];
