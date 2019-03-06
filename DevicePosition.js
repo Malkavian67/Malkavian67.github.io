@@ -24,7 +24,7 @@ function deviceOrientationHandler (eventData) {
   var x = tiltLR;
   var y = tiltFB;
   
-  var ratio = 0.75;
+  var ratio = 0.85;
   
 
   logo.style.transform = "translate("+ x * ratio +"px,"+ y * ratio +"px)";
