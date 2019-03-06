@@ -107,12 +107,11 @@ $(function()
     }
 
     function intervalHandler(interval) {
-        duration += interval
+        duration += interval;
+        document.getElementById("moInterval").innerHTML = interval;
         if(duration > 30000){
 
             accelerometer.stop();
-            gravity.stop();
-            gyroscope.stop();
             
             alert(Values);
             alert(Label);
@@ -137,7 +136,9 @@ $(function()
                 }
                 }
             });
+            
+            gravity.stop(); 
+            gyroscope.stop();
         }
-        document.getElementById("moInterval").innerHTML = interval;
     }
   
