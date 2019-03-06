@@ -80,12 +80,15 @@ $(function() {
     
     sum += length;
     avg = sum / ++count;
+    document.getElementById("avg").innerHTML = avg;
     
     if(min == -1 || min > length){
       min = length;
+      document.getElementById("min").innerHTML = min;
     }
     if(max == -1 || max < length){
       max = length;
+      document.getElementById("max").innerHTML = max;
     }  
   }
   
