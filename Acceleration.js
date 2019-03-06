@@ -1,6 +1,6 @@
-let accelerometer = new LinearAccelerationSensor();
-let gravity = new GravitySensor();
-let gyroscope = new Gyroscope();
+let accelerometer;
+let gravity;
+let gyroscope;
 
 let lastReadingTimestamp;
   
@@ -21,6 +21,8 @@ $(function() {
           {
             document.getElementById('moApi').innerHTML = 'Generic Sensor API';
   
+            accelerometer = new LinearAccelerationSensor()
+
             //acceleration
             //let accelerometer = new LinearAccelerationSensor();
             accelerometer.addEventListener('reading', e => {
@@ -33,10 +35,12 @@ $(function() {
             accelerometer.start();
   
             if ('GravitySensor' in window) {
-              gravity.addEventListener('reading', e => accelerationHandler(gravity, 'moAccelGrav'));
-              gravity.start();
+                gravity = new GravitySensor()
+                gravity.addEventListener('reading', e => accelerationHandler(gravity, 'moAccelGrav'));
+                gravity.start();
             }
-  
+
+            gyroscope = new Gyroscope()
             gyroscope.addEventListener('reading', e => rotationHandler({
               alpha: gyroscope.x,
               beta: gyroscope.y,
