@@ -71,6 +71,27 @@ function intervalHandler(interval) {
   duration += interval
   if(duration > 30000){
     accelerometer.stop();    
+    
+    new Chart(docuemnt.getElementById("line-chart"), {
+      type: 'line',
+      data: {
+        labels: Label,
+        datasets: [
+            { 
+                data: Values,
+                label: "Distance move",
+                borderColor: "#3e95cd",
+                fill: false
+            }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Motion (in seconds)'
+        }
+      }
+    });
   }
   document.getElementById("moInterval").innerHTML = interval;
 }
