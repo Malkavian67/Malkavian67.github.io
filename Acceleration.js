@@ -114,6 +114,9 @@ $(function()
             gravity.stop();
             gyroscope.stop();
             
+            alert(Values);
+            alert(Label);
+
             new Chart(document.getElementById("line-chart"), {
                 type: 'line',
                 data: {
