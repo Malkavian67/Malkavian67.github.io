@@ -1,28 +1,43 @@
 $(function() {
   $("#askButton").click( function()
    {
-        if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) {
-            document.getElementById('moApi').innerHTML = 'Generic Sensor API';
+        if ('LinearAccelerationSensor' in window && 'Gyroscope' in window) 
+        {
+          document.getElementById('moApi').innerHTML = 'Generic Sensor API';
 
-        let lastReadingTimestamp;
+          let lastReadingTimestamp;
 
-        let duration=0;
-        let min=-1;
-        let max=-1;
-        let count=0;
-        let sum=0;
-        let avg = 0;
+          let duration=0;
+          let min=-1;
+          let max=-1;
+          let count=0;
+          let sum=0;
+          let avg = 0;
 
-        //acceleration
-        let accelerometer = new LinearAccelerationSensor();
-        accelerometer.addEventListener('reading', e => {
-            if (lastReadingTimestamp) {
-            intervalHandler(Math.round(accelerometer.timestamp - lastReadingTimestamp));
-            }
-            lastReadingTimestamp = accelerometer.timestamp
-            accelerationHandler(accelerometer, 'moAccel');
-        });
-        accelerometer.start();
+          //acceleration
+          let accelerometer = new LinearAccelerationSensor();
+          accelerometer.addEventListener('reading', e => {
+              if (lastReadingTimestamp) {
+              intervalHandler(Math.round(accelerometer.timestamp - lastReadingTimestamp));
+              }
+              lastReadingTimestamp = accelerometer.timestamp
+              accelerationHandler(accelerometer, 'moAccel');
+          });
+          accelerometer.start();
+
+          if ('GravitySensor' in window) {
+            let gravity = new GravitySensor();
+            gravity.addEventListener('reading', e => accelerationHandler(gravity, 'moAccelGrav'));
+            gravity.start();
+          }
+
+          let gyroscope = new Gyroscope();
+          gyroscope.addEventListener('reading', e => rotationHandler({
+            alpha: gyroscope.x,
+            beta: gyroscope.y,
+            gamma: gyroscope.z
+          }));
+          gyroscope.start();
 
         } 
         else if ('DeviceMotionEvent' in window) {
@@ -59,12 +74,19 @@ function accelerationHandler(acceleration, targetId) {
   sum += length;
   avg = sum / ++count;
   
+  document.getElementById("avg").innerHTML = avg;
+  
   if(min == -1 || min > length){
     min = length;
+    
+    document.getElementById("min").innerHTML = min;
   }
   if(max == -1 || max < length){
     max = length;
+    document.getElementById("max").innerHTML = max;
   }  
+  
+  
 }
 
 function intervalHandler(interval) {
