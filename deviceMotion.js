@@ -113,12 +113,18 @@ function myCallback() {
 }
 
 
+var labelOfChart=[0];
+int y=0;
 
+for(int i=0;i<61;i++){
+    y=y+0.5;
+    labelOfChart.push(y);
+}
 
 new Chart(document.getElementById("line-chart"), {
   type: 'line',
   data: {
-    labels: [0,5,10,15,20,25,30],
+    labels: labelOfChart,
     datasets: [
         rotationHandlerDataX, 
         rotationHandlerDataY,
